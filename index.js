@@ -1,5 +1,7 @@
 const express = require('express');
 const { sendSuccess, sendError } = require('./utils/response');
+const ErrorCodes = require('./utils/errorCodes');
+
 const app = express();
 
 app.use(express.json());
@@ -19,7 +21,7 @@ app.get('/items', (req, res) => {
 app.get('/fail', (req, res) => {
   sendError(res, {
     message: "Resource not found.",
-    error_code: "NOT_FOUND",
+    error_code: ErrorCodes.NOT_FOUND,
     statusCode: 404
   });
 });
@@ -27,7 +29,7 @@ app.get('/fail', (req, res) => {
 app.post('/validate', (req, res) => {
   sendError(res, {
     message: "Validation failed.",
-    error_code: "VALIDATION_ERROR",
+    error_code: ErrorCodes.VALIDATION_ERROR,
     statusCode: 422,
     errors: { email: ["Email is required."], password: ["Password too short."] }
   });

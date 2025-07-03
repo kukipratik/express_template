@@ -103,7 +103,27 @@
 }
 ```
 
-### 7. **Custom Response for Actions (e.g., Delete, Update)**
+### 7. **Forbidden Error**
+
+```json
+{
+  "success": false,
+  "message": "You do not have permission to perform this action.",
+  "error_code": "FORBIDDEN"
+}
+```
+
+### 8. **Bad Request Error**
+
+```json
+{
+  "success": false,
+  "message": "Bad request. Please check your input.",
+  "error_code": "BAD_REQUEST"
+}
+```
+
+### 9. **Custom Response for Actions (e.g., Delete, Update)**
 
 ```json
 {
@@ -112,6 +132,28 @@
   "data": null
 }
 ```
+
+---
+
+# Error Codes
+
+Define your error codes in a single place to keep everything consistent and avoid typos:
+
+```js
+const ErrorCodes = {
+  SERVER_ERROR: 'SERVER_ERROR',
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  AUTH_REQUIRED: 'AUTH_REQUIRED',
+  NOT_FOUND: 'NOT_FOUND',
+  FORBIDDEN: 'FORBIDDEN',
+  BAD_REQUEST: 'BAD_REQUEST'
+};
+```
+
+**Usage:**
+
+* Always use the correct `error_code` in your error responses for clarity and consistency.
+* Import and use these codes in your backend helper functions.
 
 ---
 
@@ -152,5 +194,3 @@ HTTP status codes are essential in RESTful APIs. They’re used to communicate t
 > **Tip:**
 > If you’re ever unsure which status code to use, check [MDN’s HTTP Status Codes reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) or REST API best practices.
 > This approach will impress your team and make frontend/backend integration much smoother!
-
----

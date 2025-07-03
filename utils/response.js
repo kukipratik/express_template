@@ -1,3 +1,5 @@
+const ErrorCodes = require('./errorCodes');
+
 module.exports = {
   sendSuccess: (res, { data = null, message = "Success", statusCode = 200 } = {}) => {
     res.status(statusCode).json({
@@ -7,7 +9,7 @@ module.exports = {
     });
   },
 
-  sendError: (res, { message = "Something went wrong.", error_code = "SERVER_ERROR", statusCode = 500, errors = null } = {}) => {
+  sendError: (res, { message = "Something went wrong.", error_code = ErrorCodes.SERVER_ERROR, statusCode = 500, errors = null } = {}) => {
     const response = {
       success: false,
       message,
