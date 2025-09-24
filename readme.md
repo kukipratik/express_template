@@ -16,27 +16,6 @@
 
 ### 2. **Standard Success Response (List of Items)**
 
-**(a) Simple List**
-
-```json
-{
-  "success": true,
-  "message": "Items fetched successfully.",
-  "data": [
-    {
-      "id": 1,
-      "name": "Item One"
-    },
-    {
-      "id": 2,
-      "name": "Item Two"
-    }
-  ]
-}
-```
-
-**(b) List with Metadata (Recommended for Pagination)**
-
 ```json
 {
   "success": true,
@@ -52,7 +31,7 @@
         "name": "Item Two"
       }
     ],
-    "total": 120,
+    "total": 2,
     "page": 1,
     "pageSize": 10
   }
